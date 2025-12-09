@@ -1,0 +1,360 @@
+.InfoBox {
+  text-align: center;
+  width: 100%;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  width: 100%;
+}
+
+/* ===== Card Styles ===== */
+.cardContainer .MuiCard-root {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px var(--shadow-color),
+    0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  max-width: none;
+  width: 100%;
+  min-width: 400px;
+  animation: cardSlideIn 0.5s ease-out;
+}
+
+/* Dark mode card adjustments */
+.dark-mode .cardContainer .MuiCard-root {
+  background: linear-gradient(165deg, #2a2a3e 0%, #1a1a2e 100%);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardContainer .MuiCard-root:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 30px 70px var(--shadow-color),
+    0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Card Media with Gradient Overlay ===== */
+.cardContainer .MuiCardMedia-root {
+  height: 200px;
+  filter: brightness(1);
+  object-fit: cover;
+  position: relative;
+}
+
+.card-media-wrapper {
+  position: relative;
+}
+
+.card-media-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+/* Dark mode gradient overlay */
+.dark-mode .card-media-wrapper::after {
+  background: linear-gradient(to top, rgba(42, 42, 62, 0.98) 0%, transparent 100%);
+}
+
+/* ===== City Name ===== */
+.cardContainer .MuiTypography-h5 {
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+/* ===== Temperature Display ===== */
+.temperature-display {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+/* ===== Weather Description ===== */
+.weather-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+  transition: color 0.3s ease;
+}
+
+/* ===== Weather Icon Animation ===== */
+.weather-icon {
+  animation: iconPulse 2s ease-in-out infinite;
+  color: #667eea;
+}
+
+@keyframes iconPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+/* Weather icon color variations */
+.weather-icon.rain {
+  color: #6366f1;
+}
+
+.weather-icon.extremely-cold {
+  color: #06b6d4;
+  animation: iconShiver 0.5s ease-in-out infinite;
+}
+
+.weather-icon.extreme-cold {
+  color: #0ea5e9;
+}
+
+.weather-icon.cold {
+  color: #3b82f6;
+}
+
+.weather-icon.normal {
+  color: #10b981;
+}
+
+.weather-icon.slightly-hot {
+  color: #f59e0b;
+}
+
+.weather-icon.hot {
+  color: #ef4444;
+  animation: iconFlame 0.8s ease-in-out infinite;
+}
+
+@keyframes iconShiver {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-2px);
+  }
+
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes iconFlame {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+}
+
+/* ===== Temperature Display Colors ===== */
+.temperature-display.rain {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temperature-display.extremely-cold {
+  background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temperature-display.extreme-cold {
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temperature-display.cold {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temperature-display.normal {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temperature-display.slightly-hot {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temperature-display.hot {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Weather Badge ===== */
+.weather-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .weather-badge {
+  background: rgba(30, 30, 50, 0.9);
+  color: #f0f0f5;
+}
+
+/* ===== Stats Grid ===== */
+.stats-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 0 8px;
+  margin-top: 0.5rem;
+}
+
+.stat-box {
+  flex: 1;
+  background: var(--stat-bg);
+  border-radius: 20px;
+  padding: 24px 16px;
+  text-align: center;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark-mode .stat-box {
+  background: rgba(102, 126, 234, 0.12);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+.stat-box:hover {
+  background: rgba(102, 126, 234, 0.15);
+  transform: translateY(-3px);
+}
+
+.stat-box .stat-icon {
+  color: #667eea;
+  margin-bottom: 10px;
+  font-size: 2rem !important;
+}
+
+.stat-box .stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.stat-box .stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  transition: color 0.3s ease;
+}
+
+/* Stat box icon colors */
+.stat-box.min-temp .stat-icon {
+  color: #3b82f6;
+}
+
+.stat-box.max-temp .stat-icon {
+  color: #ef4444;
+}
+
+.stat-box.humidity .stat-icon {
+  color: #06b6d4;
+}
+
+/* ===== Card Content ===== */
+.cardContainer .MuiCardContent-root {
+  padding: 20px 24px 24px !important;
+  background: transparent;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .cardContainer .MuiCard-root {
+    max-width: 100%;
+    min-width: auto;
+    border-radius: 20px;
+  }
+
+  .temperature-display {
+    font-size: 2.8rem;
+  }
+
+  .stat-box {
+    padding: 12px 8px;
+  }
+
+  .stat-box .stat-value {
+    font-size: 1rem;
+  }
+}
